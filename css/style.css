@@ -38,13 +38,10 @@ div#contact-avatar {
 
 div#contacts div#notifications {
     background-color: #8ddafc;
-    height: 85px;
+    height: 80px;
 }
 
 div#notifications .bell-icon {
-    /* border-radius: 50%;
-    height: 50px;
-    width: 50px; */
     background-color: white;
 }
 
@@ -59,7 +56,7 @@ div#chat div.chat-container {
 }
 
 div#chat div#chat-footer {
-    height: 8%;
+    height: 10%;
     background-color: #c5c2be;
 }
 
@@ -90,5 +87,10 @@ div#chat div.chat-container .received-message {
 } 
 .my-grey{
     color: rgba(128, 128, 128, 0.772);
+}
+
+/* Font size */
+.my-small-text {
+    font-size: .8rem;
 }
 

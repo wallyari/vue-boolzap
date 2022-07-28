@@ -29,9 +29,10 @@
                 <div class="col-12 dark-gray"></div>
             </div>
             <div id="chat-wrapper" class="position-absolute container h-70 px-0 justify-content-center align-self-center d-flex">
+            <!-- Chat Window - SX SIDE -->   
                 <div id="contacts" class="border-end overflow-auto">
-                    <div class="header d-flex h-10 justify-content-between p-2">
-                        <div id="user-avatar" class="d-flex align-items-center">
+                    <div class="header d-flex h-10 justify-content-between align-items-center p-2">
+                        <div id="user-avatar" class="d-flex align-items-center p-1">
                             <img src="img/avatar_io.jpg" alt="Avatar" class="rounded-circle me-2 h-100">
                             <h6 id="user-name m-0">Arianna</h6>
                         </div>
@@ -41,36 +42,37 @@
                             <i class="fa-solid fa-ellipsis-vertical fa-lg me-3"></i>
                         </div>
                     </div>
+                    <!-- Box Notifiche -->
                     <div id="notifications" class="py-2 px-3 d-flex w-100 align-items-center">
                         <div class="bell-icon d-flex align-items-center rounded-circle justify-content-center">
-                            <i class="fas fa-bell-slash fa-xl my-blue"></i>
+                            <i class="fas fa-bell-slash fa-xl my-light-blue"></i>
                         </div>
                         <div class="text px-2 py-2">
-                            <p>Ricevi notifiche di nuovi messaggi</p>
-                            <p class="text-decoration-underline fs-6 text-muted">Attiva notifiche desktop</p>
+                            <pc class="m-0">Ricevi notifiche di nuovi messaggi</p>
+                            <p class="m-0 my-small-text text-decoration-underline text-muted">Attiva notifiche desktop</p>
                         </div>
                     </div>
-                    
-                    <!-- Cerca i Contatti  -->
-                    <div class="search-bar p-1 w-100 my-grey">
+                    <!-- Cerca i Contatti -->
+                    <div class="search-bar p-1 w-100 my-grey-bg">
                         <div class="input-group input-group-sm flex-nowrap d-flex">
-                            <span class="input-group-text"><i class="fa-solid fa-magnifying-glass text-muted"></i></span>
+                            <span class="input-group-text"><i class="fa-solid fa-magnifying-glass my-grey"></i></span>
                             <input id="search-input" type="text" class="form-control" v-model="searchInput"
-                            placeholder="Cerca o inizia una nuova chat">
+                            placeholder="Cerca o inizia una nuova chat"
+                            @keydown.enter="filteredContacts()" >
                         </div>
                     </div>
-                    <!-- Lista Contatti -->
-                    <div class="contacts-list">
-                        <div id="contact-box" class="py-2 px-3 d-flex w-100 border-bottom justify-content-between" 
+                    <!-- Lista Contatti  -->
+                    <div class="contacts-list ">
+                        <div id="contact-box" class="py-2 px-3 d-flex w-100 border-bottom justify-content-between"
                         v-for="(contact, index) in filteredContacts"
                         :class="(index == currentIndex) ? 'active' : '' "
                         @click="selectContactChat(index)">
-                            
-                        <div id="contact-chat-info" class="d-flex">
-                                <img :src="`img/avatar${contact.avatar}.jpg`" alt="Contact Avatar" class="rounded-circle me-2">
+
+                            <div id="contact-chat-info" class="d-flex">
+                                <img :src="`img/avatar${filteredContacts[index].avatar}.jpg`" alt="Contact Avatar" class="rounded-circle me-2">
                                 <div class="contact-text px-2">
                                     <h6 class="m-0">{{ contact.name }}</h6>
-                                    <p class="message m-0 fs-6 text-muted">Ultimo messaggio inviato</p>
+                                    <p class="message m-0 text-muted my-small-text">Ultimo messaggio inviato</p>
                                 </div>
                             </div>
                         </div>
@@ -78,36 +80,35 @@
                 </div>
                 <!-- Chat Window - DX SIDE -->
                 <div id="chat" class="w-70 h-100">
-                    <div id="user-info" class="d-flex align-items-center">
-                        <!-- avatar -->
-                        <div id="user-avatar" class="d-flex">
-                            <img :src="`img/avatar${filteredContacts[currentIndex].avatar}.jpg`" alt="" class="rounded-circle h-100">
+                    <div class="header d-flex justify-content-between p-2 align-items-center">
+                        <div id="user-info" class="d-flex align-items-center">
+                            <!-- avatar -->
+                            <div id="user-avatar" class="d-flex">
+                                <img :src="`img/avatar${filteredContacts[currentIndex].avatar}.jpg`" alt="" class="rounded-circle h-100">
+                            </div>
+                            
+                            <div class="user-text d-flex flex-column ms-2">
+                            <!-- user-name -->
+                                <h6 id="user-name" class="m-0">{{ filteredContacts[currentIndex].name }}</h6>
+                                <p class="message m-0 text-muted my-small-text">Ultimo accesso oggi alle ore </p>
+                            </div>
                         </div>
-                        <!-- name&info -->
-                        <div class="user-text d-flex flex-column ms-2">
-                            <h6 id="user-name" class="m-0">{{ filteredContacts[currentIndex].name }}</h6>
-                            <p class="message m-0 text-muted my-small-text">Ultimo accesso oggi alle ore </p>
-                        </div>
-                    </div>
                         <div class="header-icons d-flex align-items-center my-grey">
                             <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                             <i class="fa-solid fa-paperclip fa-lg mx-3"></i>
                             <i class="fa-solid fa-ellipsis-vertical fa-lg me-3"></i>
                         </div>
-                </div>
+                    </div>
                     <!-- Conversazione contatti -->
                     <div class="chat-container container d-flex p-5 justify-content-center">
-                        <div class="row w-100 g-2 flex-column overflow-auto flex-nowrap">
-                            <div class="msg col-5 p-2 rounded-3 d-flex flex-column"
-                            v-for="(message, index) in filteredContacts[currentIndex].messages"
-                            :class="(filteredContacts[currentIndex].messages[index].status == 'sent') ? 'sent-message align-self-end' : 'received-message'">
-
-                            <p class="m-0 w-100">{{ filteredContacts[currentIndex].messages[index].message }}</p>
-                                
-                            </div>
-
+                                <div class="row w-100 g-2 flex-column overflow-auto flex-nowrap">
+                                <div class="msg col-5 p-2 rounded-3 d-flex flex-column"
+                                v-for="(message, index) in filteredContacts[currentIndex].messages"
+                                :class="(filteredContacts[currentIndex].messages[index].status == 'sent') ? 'sent-message align-self-end' : 'received-message'">
+                                    <p class="m-0 w-100">{{ filteredContacts[currentIndex].messages[index].message }}</p>
+        
+                                </div> 
                         </div>
-
                     </div>
 
                     <div id="chat-footer" class="d-flex align-items-center justify-content-between py-2">
@@ -115,7 +116,8 @@
                             <i class="fa-regular fa-face-smile fa-xl"></i>
                         </div>
                         <div class="message-input-wrapper d-flex align-items-center h-100 w-100 text-muted">
-                            <input id="message-input" type="text" placeholder="Scrivi un messaggio" class="rounded-3 w-100 px-3" >
+                            <input id="message-input" type="text" placeholder="Scrivi un messaggio" class="rounded-3 w-100 px-3"
+                            v-model="newMessage" @keydown.enter="sendNewMessage(currentIndex)">
                         </div>
                         <div class="voice-message-icon d-flex justify-content-center align-items-center px-5">
                             <i class="fas fa-microphone fa-xl"></i>
@@ -129,4 +131,3 @@
 
     <script type="text/javascript" src="js/main.js"></script>
 </body>
-</html>

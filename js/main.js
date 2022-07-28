@@ -179,6 +179,24 @@ const app = new Vue(
                 this.currentIndex = index;
                 return this.currentIndex;
             },
+            setChatIndex(index) {
+                this.currentChat = index;
+                return this.currentChat;
+            },
+
+            sendNewMessage(index) {
+            if (this.newMessage.trim() !== '') {
+                this.filteredContacts[index].messages.push(
+                    {
+                        message: this.newMessage,
+                        status: 'sent'
+                    }
+                );
+                    this.newMessage = '';
+
+                }
+            },
+
 
         
         }, // computed properties per poter accedere alla property filteredContacts (ricerca contatti) 
