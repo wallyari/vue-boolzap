@@ -78,17 +78,23 @@
                 </div>
                 <!-- Chat Window - DX SIDE -->
                 <div id="chat" class="w-70 h-100">
-                    <div class="header d-flex justify-content-between p-2 align-items-center">
-                        <div id="user-avatar" class="d-flex align-items-center">
-                            <img src="img/avatar_io.jpg" alt="Avatar" class="rounded-circle h-100 me-2">
-                            <h6 id="user-name">User</h6>
+                    <div id="user-info" class="d-flex align-items-center">
+                        <!-- avatar -->
+                        <div id="user-avatar" class="d-flex">
+                            <img :src="`img/avatar${filteredContacts[currentIndex].avatar}.jpg`" alt="" class="rounded-circle h-100">
                         </div>
+                        <!-- name&info -->
+                        <div class="user-text d-flex flex-column ms-2">
+                            <h6 id="user-name" class="m-0">{{ filteredContacts[currentIndex].name }}</h6>
+                            <p class="message m-0 text-muted my-small-text">Ultimo accesso oggi alle ore </p>
+                        </div>
+                    </div>
                         <div class="header-icons d-flex align-items-center my-grey">
                             <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                             <i class="fa-solid fa-paperclip fa-lg mx-3"></i>
                             <i class="fa-solid fa-ellipsis-vertical fa-lg me-3"></i>
                         </div>
-                    </div>
+                </div>
                     <!-- Conversazione contatti -->
                     <div class="chat-container container d-flex p-5 justify-content-center">
                         <div class="row w-100 g-2 flex-column overflow-auto flex-nowrap">
