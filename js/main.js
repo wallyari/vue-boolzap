@@ -193,6 +193,15 @@ const app = new Vue(
                     }
                 );
                     this.newMessage = '';
+                    
+                    setTimeout(() => {
+                        this.filteredContacts[index].messages.push(
+                            {
+                                message: 'Ok',
+                                status: 'received'
+                            }
+                        );
+                    }, 1000);
 
                 }
             },
