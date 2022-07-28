@@ -48,9 +48,6 @@ div#notifications .bell-icon {
     background-color: white;
 }
 
-.my-light-blue {
-    color: #8ddafb;
-} 
 
 div#contact-chat-info img {
     width: 20%;
@@ -70,3 +67,20 @@ div#chat-footer input {
     height: 90%;
     border: none;
 }
+
+/* active contact class */
+div#contacts #contact-box.active,
+div#contacts #contact-box:hover {
+    background-color: #ebebeb;
+    cursor: pointer;
+}
+
+
+/* Colors */
+.my-light-blue {
+    color: #8ddafb;
+} 
+.my-grey{
+    color: rgba(128, 128, 128, 0.772);
+}
+

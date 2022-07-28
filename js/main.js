@@ -165,11 +165,31 @@ const app = new Vue(
                         }
                     ],
                 }
-            ]
+            ],
+            currentIndex: 0,
+            searchInput: '',
+            currentChat: null
 
         },
 
         methods: {
+            
+            //Lista Contatti
+            selectContactChat(index) {
+                this.currentIndex = index;
+                return this.currentIndex;
+            },
+
+        
+        }, // computed properties per poter accedere alla property filteredContacts (ricerca contatti) 
+      
+        computed: {
+            filteredContacts() {
+                return this.contacts.filter((contact) => {
+                    return contact.name.toLowerCase().match(this.searchInput.toLowerCase());
+                });
+            },
         }
-}
+        
+    }
 );
