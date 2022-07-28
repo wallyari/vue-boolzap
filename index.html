@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    !-- Google font -->
+    <!-- Google font -->
 
     <!-- Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
@@ -50,13 +50,15 @@
                             <p class="text-decoration-underline fs-6 text-muted">Attiva notifiche desktop</p>
                         </div>
                     </div>
+                    </div>
+                    <!-- Cerca i Contatti  -->
                     <div class="search-bar p-1 w-100 my-grey-bg">
                         <div class="input-group flex-nowrap d-flex">
                             <span class="input-group-text" id="search-wrap"><i class="fa-solid fa-magnifying-glass"></i></span>
                             <input id="search-input" type="text" class="form-control" placeholder="Cerca o inizia una nuova chat">
                         </div>
                     </div>
-
+                    <!-- Lista Contatti -->
                     <div class="contacts-list">
                         <div id="contact-box" class="py-2 px-3 d-flex w-100 my-grey-bg border-bottom" v-for="contact in contacts">
                             <div id="contact-chat-info" class="d-flex">
@@ -69,6 +71,7 @@
                         </div>
                     </div>    
                 </div>
+                <!-- Chat Window - DX SIDE -->
                 <div id="chat" class="w-70 h-100">
                     <div class="header d-flex justify-content-between p-2 align-items-center">
                         <div id="user-avatar" class="d-flex align-items-center">
@@ -81,6 +84,7 @@
                             <i class="fa-solid fa-ellipsis-vertical fa-lg me-3"></i>
                         </div>
                     </div>
+                    <!-- Conversazione contatti -->
                     <div class="chat-container overflow-auto dark-gray">
 
                     </div>
