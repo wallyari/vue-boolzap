@@ -193,7 +193,7 @@ const app = new Vue(
                         
                         message: this.newMessage,
                         status: 'sent',
-                        date: dayjs().format('HH:mm'),
+                        date: dayjs().format('HH:mm')
                     }
                 );
                     this.newMessage = '';
@@ -211,7 +211,7 @@ const app = new Vue(
             },
 
             getTime(date) {
-                // return dayjs(date, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
+                return dayjs(date, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
             }
 
 
