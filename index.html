@@ -110,7 +110,7 @@
                                 :class="(filteredContacts[currentIndex].messages[index].status == 'sent') ? 'sent-message align-self-end' : 'received-message'">
                                     <p class="m-0 w-100">{{ filteredContacts[currentIndex].messages[index].message }}</p>
                                     <span class="timestamp my-smaller-text text-end text-muted align-self-end">
-                                        {{ getTime(filteredContacts[currentIndex].messages[index].date) }}
+                                        {{ getTime(filteredContacts[currentIndex].messages[index].date) }}  
                                         
                                     </span>
                                 </div> 
@@ -136,6 +136,7 @@
     </main>
     <!-- Day JS -->
     <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    
     <!-- My Js -->
     <script type="text/javascript" src="js/main.js"></script>
 </body>

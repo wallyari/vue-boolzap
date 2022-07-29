@@ -188,8 +188,10 @@ const app = new Vue(
             if (this.newMessage.trim() !== '') {
                 this.filteredContacts[index].messages.push(
                     {
+                        
                         message: this.newMessage,
-                        status: 'sent'
+                        status: 'sent',
+                        date: dayjs().format('HH:mm'),
                     }
                 );
                     this.newMessage = '';
@@ -205,6 +207,10 @@ const app = new Vue(
 
                 }
             },
+
+            getTime(date) {
+                return dayjs(date, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
+            }
 
 
         
