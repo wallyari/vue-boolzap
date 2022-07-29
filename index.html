@@ -74,6 +74,9 @@
                                     <p class="message m-0 text-muted my-small-text">Ultimo messaggio inviato</p>
                                 </div>
                             </div>
+                            <div class="time">
+                                <span class="text-muted my-small-text">12:00</span>
+                        </div>
                         </div>
                     </div>    
                 </div>
@@ -89,7 +92,8 @@
                             <div class="user-text d-flex flex-column ms-2">
                             <!-- user-name -->
                                 <h6 id="user-name" class="m-0">{{ filteredContacts[currentIndex].name }}</h6>
-                                <p class="message m-0 text-muted my-small-text">Ultimo accesso oggi alle ore </p>
+
+                                <p class="message m-0 text-muted my-small-text">Ultimo accesso oggi alle ore {{ getTime(filteredContacts[currentIndex].messages.slice(-1)[0].date) }}</p>
                             </div>
                         </div>
                         <div class="header-icons d-flex align-items-center my-grey">
@@ -105,7 +109,10 @@
                                 v-for="(message, index) in filteredContacts[currentIndex].messages"
                                 :class="(filteredContacts[currentIndex].messages[index].status == 'sent') ? 'sent-message align-self-end' : 'received-message'">
                                     <p class="m-0 w-100">{{ filteredContacts[currentIndex].messages[index].message }}</p>
-        
+                                    <span class="timestamp my-smaller-text text-end text-muted align-self-end">
+                                        {{ getTime(filteredContacts[currentIndex].messages[index].date) }}
+                                        
+                                    </span>
                                 </div> 
                         </div>
                     </div>
@@ -127,6 +134,8 @@
             </div>
     </div>
     </main>
-
+    <!-- Day JS -->
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <!-- My Js -->
     <script type="text/javascript" src="js/main.js"></script>
 </body>
