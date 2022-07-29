@@ -7,7 +7,7 @@
     <!-- Google font -->
 
     <!-- Vue -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
     <!-- Font-Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -63,7 +63,7 @@
                     <!-- Lista Contatti  -->
                     <div class="contacts-list ">
                         <div id="contact-box" class="py-2 px-3 d-flex w-100 border-bottom justify-content-between"
-                        v-for="(contact, index) in filteredContacts"
+                        v-for="(contact, index) in filteredContacts" 
                         :class="(index == currentIndex) ? 'active' : '' "
                         @click="selectContactChat(index)">
 

@@ -165,9 +165,11 @@ const app = new Vue(
                         }
                     ],
                 }
-            ],
-            currentIndex: 0,
+            ],          
+        
+            currentIndex: 0,            
             searchInput: '',
+            NewMessage: '',            
             currentChat: null
 
         },
@@ -209,12 +211,12 @@ const app = new Vue(
             },
 
             getTime(date) {
-                return dayjs(date, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
+                // return dayjs(date, "DD/MM/YYYY HH:mm:ss").format("HH:mm");
             }
 
 
         
-        }, // computed properties per poter accedere alla property filteredContacts (ricerca contatti) 
+        }, // computed properties per poter accedere alla property filteredContacts (ricerca contatti corrispondenti) 
       
         computed: {
             filteredContacts() {
